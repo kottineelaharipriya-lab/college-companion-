@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="#">🏠 Home</a>
+    <a href="#notes">📚 Notes</a>
+    <a href="#assignments">📝 Assignments</a>
+    <a href="#timetable">📅 Timetable</a>
+    <a href="#attendance">📊 Attendance</a>
+    <a href="#announcements">📢 Announcements</a>
+</nav>
+  <button id="darkModeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+<input type="text" id="searchBox" placeholder="🔍 Search here...">
+
+<button onclick="searchContent()">Search</button>
+<h1>🎓 Welcome to College Companion</h1>
+
+<p>Your college information, all in one place.</p>
+<p>✨ Manage your notes, assignments, timetable and attendance easily!</p>
+<h2 id="notes">📚 Notes</h2>
+<ul>
+    <li onclick="showCSNotes()">📘 Computer Science</li>
+    <li onclick="showMathNotes()">📗 Mathematics</li>
+    <li onclick="showPhysicsNotes()">📙 Physics</li>
+    <li onclick="showEnglishNotes()">📕 English</li>
+</ul>
+
+<h2 id="assignments">📝 Assignments</h2>
+<ul>
+    <li onclick="showMessage('Java Assignment coming soon!')">💻 Java Assignment</li>
+    <li onclick="showMessage('Mathematics Assignment coming soon!')">📊 Mathematics Assignment</li>
+    <li onclick="showMessage('Physics Assignment coming soon!')">🔬 Physics Assignment</li>
+    <li onclick="showMessage('English Assignment coming soon!')">📚 English Assignment</li>
+</ul>
+
+<h2 id="timetable">📅 Timetable</h2>
+<table>
+    <tr>
+        <th>Day</th>
+        <th>Subject</th>
+        <th>Time</th>
+    </tr>
+
+    <tr>
+        <td>Monday</td>
+        <td>Java</td>
+        <td>9:00 AM</td>
+    </tr>
+
+    <tr>
+        <td>Tuesday</td>
+        <td>Mathematics</td>
+        <td>10:00 AM</td>
+    </tr>
+
+    <tr>
+        <td>Wednesday</td>
+        <td>Physics</td>
+        <td>11:00 AM</td>
+    </tr>
+
+    <tr>
+        <td>Thursday</td>
+        <td>Data Structures</td>
+        <td>9:00 AM</td>
+    </tr>
+
+    <tr>
+        <td>Friday</td>
+        <td>English</td>
+        <td>10:00 AM</td>
+    </tr>
+</table>
+
+<h2 id="attendance">📊 Attendance</h2>
+
+<p>Enter your class details:</p>
+
+<input type="number" id="totalClasses" placeholder="Total Classes">
+
+<input type="number" id="attendedClasses" placeholder="Attended Classes">
+
+<br><br>
+
+<button id="calculateBtn">Calculate Attendance</button>
+
+<div id="result"></div>
+
+<script>
+document.getElementById("calculateBtn").addEventListener("click", function() {
+
+    let total = Number(document.getElementById("totalClasses").value);
+    let attended = Number(document.getElementById("attendedClasses").value);
+    let result = document.getElementById("result");
+
+    if (total <= 0 || attended < 0 || attended > total) {
+        result.innerHTML = "Please enter valid class details.";
+        return;
+    }
+
+    let percentage = (attended / total) * 100;
+
+    result.innerHTML = "Your Attendance is " + percentage.toFixed(2) + "%";
+});
+
+function showMessage(message) {
+    window.alert(String(message));
+}
+  function showCSNotes() {
+    alert(
+        "Computer Science Notes\n\n" +
+        "1. Java Basics\n" +
+        "2. Data Structures\n" +
+        "3. Algorithms\n" +
+        "4. Object-Oriented Programming"
+    );
+  }
+  function showMathNotes() {
+    alert(
+        "Mathematics Notes\n\n" +
+        "1. Algebra\n" +
+        "2. Calculus\n" +
+        "3. Matrices\n" +
+        "4. Probability"
+    );
+  }
+  function showPhysicsNotes() {
+    alert(
+        "Physics Notes\n\n" +
+        "1. Mechanics\n" +
+        "2. Waves\n" +
+        "3. Optics\n" +
+        "4. Semiconductors"
+    );
+  }
+  function showEnglishNotes() {
+    alert(
+        "English Notes\n\n" +
+        "1. Grammar\n" +
+        "2. Communication Skills\n" +
+        "3. Vocabulary\n" +
+        "4. Writing Skills"
+    );
+  }
+  function searchContent() {
+    let search = document.getElementById("searchBox").value.toLowerCase();
+
+    if (search === "") {
+        alert("Please enter something to search.");
+        return;
+    }
+
+    if (search.includes("java")) {
+        alert("Java content found! 💻");
+    } else if (search.includes("math")) {
+        alert("Mathematics content found! 📗");
+    } else if (search.includes("physics")) {
+        alert("Physics content found! 📙");
+    } else if (search.includes("english")) {
+        alert("English content found! 📕");
+    } else {
+        alert("No content found. 😕");
+    }
+  }
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    let button = document.getElementById("darkModeBtn");
+
+    if (document.body.classList.contains("dark-mode")) {
+        button.innerHTML = "☀️ Light Mode";
+    } else {
+        button.innerHTML = "🌙 Dark Mode";
+    }
+  }
+</script>
+<h2 id="announcements">📢 Announcements</h2>
+
+<div class="announcement">
+    📢 Java assignment submission on Monday
+</div>
+
+<div class="announcement">
+    📢 Physics internal exam next week
+</div>
+
+<div class="announcement">
+    📢 College event on Friday
+</div>
+</body>
+</html>
